@@ -1,0 +1,88 @@
+.button {
+  padding-left: 24px;
+  padding-right: 24px;
+
+  &.ant-btn {
+    height: 35px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border: #6e6d7a !important;
+  }
+  &.ant-btn-default {
+    border: 1px solid #d9d9d9;
+  }
+
+  &.ant-btn-primary {
+    background-color: #0d0c22;
+    &:hover {
+      background-color: #565564 !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 8px -6px #909090;
+    }
+    &:focus {
+      color: #fff;
+      border-color: #565564 !important;
+      background: #565564 !important;
+    }
+    &:disabled {
+      background-color: #0d0c22a1 !important;
+
+      color: #fff !important;
+    }
+  }
+
+  &.ant-btn-secondary {
+    background-color: #f0eefe;
+    color: #0d0c22;
+    &:hover {
+      background-color: #f0eefe;
+      box-shadow: 0 6px 8px -6px #909090;
+    }
+    &.reset-password-profile {
+      &:hover {
+        background-color: #5646ff;
+        color: #ffffff;
+        box-shadow: 0 6px 8px -6px #909090;
+      }
+    }
+  }
+
+  &.ant-btn-link {
+    color: #5646ff;
+  }
+
+  &.create-emulator-button {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    margin-bottom: 16px;
+    background-color: #f0eeff;
+    color: #5646ff;
+
+    &:hover {
+      background-color: #f0eefe;
+      color: #5646ff;
+      box-shadow: 0 6px 8px -6px #909090;
+    }
+
+    .anticon {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      scale: 1.714;
+    }
+  }
+
+  &.select-on-map-button {
+    height: 48px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    img {
+      margin-right: 8px;
+    }
+  }
+}

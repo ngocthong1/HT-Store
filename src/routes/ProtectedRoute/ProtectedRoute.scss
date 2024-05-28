@@ -1,0 +1,81 @@
+#layout-container {
+  height: 100vh;
+  width: 100vw;
+  .ant-layout-header {
+    height: 70px !important;
+    line-height: 70px !important;
+  }
+  .layout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff !important;
+    color: black !important;
+    width: 100%;
+    .menu-list {
+      .item-menu {
+        cursor: pointer;
+      }
+      .menu-item-active {
+        font-size: 16px !important;
+        border-radius: 12px;
+        height: 35px;
+        padding: 12px;
+        color: white !important;
+        background: #ee9ca7; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to bottom,
+          #ffdde1,
+          #ee9ca7
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+        @media only screen and (max-width: 455px) {
+          .ant-space-item {
+            line-height: normal !important;
+            align-items: center;
+            display: flex;
+            position: relative;
+            left: 4px;
+          }
+        }
+      }
+    }
+    .title-menu {
+      color: white !important;
+      @media only screen and (max-width: 455px) {
+        display: none;
+      }
+    }
+    .logo-header {
+      font-size: 24px;
+      font-family: 'Shrikhand', serif !important;
+      background: #ee9ca7;
+      background: -webkit-linear-gradient(to bottom, #ee9ca7, #ffdde1);
+      background: linear-gradient(to bottom, #ee9ca7, #ffdde1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+      @media only screen and (min-width: 768px) and (max-width: 979px) {
+        font-size: 18px;
+      }
+    }
+    .topnar {
+      background-color: black !important;
+    }
+  }
+  .layout-content {
+    height: max-content;
+    background: #eff3f9 !important;
+    border-radius: 50px 50px 0 0 !important;
+    .ant-card-layout {
+      max-height: max-content;
+      border-radius: 50px 50px 0 0;
+      background: #eff3f9 !important;
+      .ant-card-body {
+        padding: 0 35px;
+      }
+    }
+  }
+}

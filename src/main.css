@@ -1,0 +1,16 @@
+*{
+  font-family: 'Oswald', sans-serif !important;
+}
+body{
+  background: #EFEFEF !important;
+
+}
+.ant-layout {
+  background: #EFEFEF !important;
+}
+.ant-space-item{
+  line-height: normal !important;
+  align-items: center;
+  display: flex;
+}
+
