@@ -5,8 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import DropProfile from '../../components/molecules/DropProfile/DropProfile';
 import './Homepage.scss';
+import CarouselComponent from '../../components/molecules/Carousel/Carousel';
 
-const { Header } = Layout;
+const { Header, Content } = Layout;
 
 export const Homepage = () => {
   const pathname = window.location.pathname.split('/')[1];
@@ -46,7 +47,7 @@ export const Homepage = () => {
   ];
   return (
     <Layout id="layout-container">
-      <Header className="layout-header">
+      <Header className="w-full layout-header">
         <Typography className="logo-header" onClick={() => navigate('/')}>
           {t('SYSTEM.LOGO_NAME')}
         </Typography>
@@ -56,7 +57,7 @@ export const Homepage = () => {
               <Tooltip title={item.label} key={index} trigger="hover">
                 <Space
                   key={index}
-                  //   className={`w-100 item-menu ${
+                  //   className={`w-full item-menu ${
                   //     activeItem === item.key ? 'menu-item-active' : ''
                   //   }`}
                   direction="horizontal"
@@ -76,6 +77,9 @@ export const Homepage = () => {
         </Space>
         <DropProfile />
       </Header>
+      <Content className="w-full">
+        <CarouselComponent />
+      </Content>
     </Layout>
   );
 };

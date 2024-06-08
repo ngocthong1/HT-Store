@@ -2,21 +2,26 @@ import {
   UserOutlined,
   LogoutOutlined,
   ShoppingOutlined,
+  ProfileOutlined,
+  LoginOutlined,
 } from '@ant-design/icons';
-import { Badge, Dropdown, Row, Space, Switch, Typography } from 'antd';
-import { useState } from 'react';
+import { Badge, Dropdown, Space, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './DropProfile.scss';
-import i18n from 'i18next';
+import { useAuth } from '../../../provider/authProvider';
 
 const DropProfile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const handleUser = async (key) => {
     if (key == 'profile') {
       navigate('/profile');
+    }
+    if (key == 'login') {
+      navigate('/login');
     }
     if (key == 'logout') {
       localStorage.clear();
@@ -25,19 +30,28 @@ const DropProfile = () => {
   };
 
   const items = [
-    // {
-    //   key: 'profile',
-    //   label: (
-    //     <Typography style={{ color: '#121212', fontWeight: 600 }}>
-    //       {t('DROPDOWN_PROFILE.PROFILE')}
-    //     </Typography>
-    //   ),
-    //   icon: <UserOutlined />,
-    // },
-    {
+    token && {
+      key: 'profile',
+      label: (
+        <Typography className="text-[#121212] hover:text-[#5646ff] font-semibold">
+          {t('DROPDOWN_PROFILE.PROFILE')}
+        </Typography>
+      ),
+      icon: <ProfileOutlined />,
+    },
+    !token && {
+      key: 'login',
+      label: (
+        <Typography className="text-[#121212] hover:text-[#5646ff] font-semibold">
+          {t('DROPDOWN_PROFILE.SIGN_IN')}
+        </Typography>
+      ),
+      icon: <LoginOutlined />,
+    },
+    token && {
       key: 'logout',
       label: (
-        <Typography style={{ color: '#FB303E', fontWeight: 600 }}>
+        <Typography className="text-[#121212] hover:text-[#FB303E] font-semibold">
           {t('DROPDOWN_PROFILE.SIGN_OUT')}
         </Typography>
       ),
@@ -47,15 +61,6 @@ const DropProfile = () => {
 
   return (
     <Space direction="horizontal" size={'large'}>
-      {/* <Switch
-        checkedChildren="EN"
-        unCheckedChildren="VI"
-        defaultChecked={localStorage.getItem('lang') === 'en' ? true : false}
-        onChange={(e) => {
-          localStorage.setItem('lang', e ? 'en' : 'vi');
-          i18n.changeLanguage(e ? 'en' : 'vi');
-        }}
-      /> */}
       <Badge count={5} size="small">
         <ShoppingOutlined style={{ fontSize: '18px', cursor: 'pointer' }} />
       </Badge>
@@ -72,7 +77,7 @@ const DropProfile = () => {
         placement="bottom"
         // onOpenChange={() => setActiveItem(!activeItem)}
       >
-        <Typography.Text className="drop-name font-bold text-[#5646ff]">
+        <Typography.Text className="drop-name font-bold hover:text-[#5646ff]">
           <UserOutlined style={{ fontSize: '16px' }} />
         </Typography.Text>
       </Dropdown>

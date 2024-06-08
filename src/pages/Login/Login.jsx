@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../provider/authProvider';
 import {
@@ -6,7 +7,6 @@ import {
   Row,
   Space,
   Typography,
-  Checkbox,
   Form,
   Input,
   notification,
@@ -18,30 +18,35 @@ import iconGoogle from '../../assets/img/google-icon.png';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { auth, provider } from '../../service/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { axiosInstance } from '../../config/axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Toast } from '../../components/toast/Toast';
+import { loginApi } from '../../apis/user';
 
 const Login = () => {
   const { setToken, token } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [api, contextHolder] = notification.useNotification();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const openNotificationWithIcon = (type, message) => {
     api[type]({
       message,
     });
   };
+
   if (token) {
     return <Navigate to="/" />;
   }
+
   useEffect(() => {
-    document.title = 'EMP | Login';
+    document.title = 'HTS | Login';
   }, []);
 
   const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
-      if (data.user.email === import.meta.env.VITE_APP_EMAIL) {
+      if (data) {
         navigate('/');
         Toast('success', t('TOAST.LOGIN_SUCCESS'));
         return setToken(data.user.accessToken);
@@ -52,8 +57,10 @@ const Login = () => {
   };
 
   const onFinish = async (values) => {
-    await axiosInstance.post('login', values).then((response) => {
+    setIsLoading(true);
+    await loginApi(values).then((response) => {
       if (response) {
+        setIsLoading(false);
         navigate('/');
         Toast('success', t('TOAST.LOGIN_SUCCESS'));
         return setToken(response.data);
@@ -82,7 +89,7 @@ const Login = () => {
 
             <Form
               name="normal_login"
-              className="login-form w-100"
+              className="login-form w-full"
               initialValues={{
                 remember: true,
               }}
@@ -122,7 +129,8 @@ const Login = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="btn-login w-100"
+                  className="btn-login w-full"
+                  loading={isLoading}
                 >
                   {t('LOGIN.LOGIN')}
                 </Button>
@@ -135,11 +143,8 @@ const Login = () => {
               block
               onClick={handleClick}
             >
-              <div className="d-flex align-items-center justify-content-center">
-                <img
-                  src={iconGoogle}
-                  style={{ width: '30px', marginRight: '10px' }}
-                />
+              <div className="flex items-center justify-center">
+                <img src={iconGoogle} className="w-5 mr-2 text-lg" />
                 {t('LOGIN.WITH_GOOGLE')}
               </div>
             </Button>

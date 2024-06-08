@@ -1,8 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './main.css';
 import 'antd/dist/reset.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import { Suspense } from 'react';
 import AuthProvider from './provider/authProvider';
 import SpinLoading from './components/atoms/SpinLoading/SpinLoading.jsx';

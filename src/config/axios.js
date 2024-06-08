@@ -1,9 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: location.origin.includes('127.0.0.1') || location.origin.includes('localhost')
-  ? `http://${location.hostname}:4000/`
-  : `https://api-emptrack.onrender.com/`
+  baseURL:
+    location.origin.includes('127.0.0.1') ||
+    location.origin.includes('localhost')
+      ? `http://${location.hostname}:5001/api`
+      : `https://hts-backend-spvk.onrender.com/api`,
 });
 
 axiosInstance.interceptors.request.use(
@@ -14,7 +16,7 @@ axiosInstance.interceptors.request.use(
   function (error) {
     // Do something with request error
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosInstance.interceptors.response.use(
@@ -23,8 +25,9 @@ axiosInstance.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-  } else {
+      //* */
+    } else {
       return Promise.reject(error);
-  }
-  }
+    }
+  },
 );

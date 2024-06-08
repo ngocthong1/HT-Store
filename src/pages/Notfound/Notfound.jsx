@@ -9,7 +9,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   useEffect(() => {
-    document.title = 'EMP | Not Found';
+    document.title = 'HTS | Not Found';
   }, []);
   return (
     <Row id="notfound-container">

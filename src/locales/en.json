@@ -154,7 +154,8 @@
     "PROFILE": "Profile",
     "SIGN_OUT": "Log out",
     "PLACEHOLDER": "Enter {{name}}",
-    "USER": "User"
+    "USER": "User",
+    "SIGN_IN": "Sign in"
   },
   "ACTION": {
     "UPDATE": "Update",
