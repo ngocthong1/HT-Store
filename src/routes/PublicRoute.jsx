@@ -1,6 +1,7 @@
 // Define public routes accessible to all users
 import { Homepage } from '../pages/Homepage/Homepage';
 import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 
 const PublicRoute = [
   {
@@ -13,7 +14,7 @@ const PublicRoute = [
   },
   {
     path: 'register',
-    element: <div>register page</div>,
+    element: <Register />,
   },
   {
     path: 'service',

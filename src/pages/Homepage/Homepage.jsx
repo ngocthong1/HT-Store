@@ -6,8 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import DropProfile from '../../components/molecules/DropProfile/DropProfile';
 import './Homepage.scss';
 import CarouselComponent from '../../components/molecules/Carousel/Carousel';
+import HeroHome from '../../components/molecules/HeroHome/HeroHome';
+import Explore from '../../components/molecules/Explore/Explore.jsx';
+import FeaturesBlock from '../../components/molecules/FeaturesBlock/FeacherBlockes.jsx';
+import FooterComponent from '../../components/layout/Footer/Footer.jsx';
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 export const Homepage = () => {
   const pathname = window.location.pathname.split('/')[1];
@@ -47,7 +51,7 @@ export const Homepage = () => {
   ];
   return (
     <Layout id="layout-container">
-      <Header className="w-full layout-header">
+      <Header className="w-full layout-header !bg-grayshade-500">
         <Typography className="logo-header" onClick={() => navigate('/')}>
           {t('SYSTEM.LOGO_NAME')}
         </Typography>
@@ -78,7 +82,11 @@ export const Homepage = () => {
         <DropProfile />
       </Header>
       <Content className="w-full">
+        <HeroHome />
         <CarouselComponent />
+        <Explore />
+        <FeaturesBlock />
+        <FooterComponent />
       </Content>
     </Layout>
   );

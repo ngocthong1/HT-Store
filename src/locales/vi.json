@@ -2,7 +2,7 @@
   "SYSTEM": {
     "LOGO_NAME": "HT Store"
   },
-  "LOGIN": {
+  "LOGIN_FORM": {
     "TEXT": "Chào mừng trở lại, hãy đăng nhập bên dưới",
     "PASSWORD": "Mật khẩu",
     "PASSWORD_INPUT": "Nhập mật khẩu",

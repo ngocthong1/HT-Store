@@ -49,25 +49,28 @@ const Login = () => {
       if (data) {
         navigate('/');
         Toast('success', t('TOAST.LOGIN_SUCCESS'));
-        return setToken(data.user.accessToken);
+        return setToken(JSON.stringify(data.user.accessToken));
       } else {
-        return openNotificationWithIcon('error', `${t('LOGIN.ERROR')}`);
+        return openNotificationWithIcon('error', `${t('LOGIN_FORM.ERROR')}`);
       }
     });
   };
 
   const onFinish = async (values) => {
-    setIsLoading(true);
-    await loginApi(values).then((response) => {
-      if (response) {
-        setIsLoading(false);
-        navigate('/');
-        Toast('success', t('TOAST.LOGIN_SUCCESS'));
-        return setToken(response.data);
-      } else {
-        return openNotificationWithIcon('error', `${t('LOGIN.ERROR')}`);
-      }
-    });
+    try {
+      setIsLoading(true);
+      await loginApi(values).then((response) => {
+        if (response) {
+          setIsLoading(false);
+          navigate('/');
+          Toast('success', t('TOAST.LOGIN_SUCCESS'));
+          return setToken(response.data.accessToken);
+        }
+      });
+    } catch (error) {
+      setIsLoading(false);
+      return openNotificationWithIcon('error', error.response.data.message);
+    }
   };
   return (
     <div id="main-container">
@@ -85,7 +88,9 @@ const Login = () => {
             <Typography className="logo-header">
               {t('SYSTEM.LOGO_NAME')}
             </Typography>
-            <Typography className="title-login">{t('LOGIN.TEXT')}</Typography>
+            <Typography className="title-login">
+              {t('LOGIN_FORM.TEXT')}
+            </Typography>
 
             <Form
               name="normal_login"
@@ -100,13 +105,13 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('LOGIN.EMAIL_VALIDATION'),
+                    message: t('LOGIN_FORM.EMAIL_VALIDATION'),
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder={t('LOGIN.EMAIL_PLACEHOLDER')}
+                  placeholder={t('LOGIN_FORM.EMAIL_PLACEHOLDER')}
                   type="email"
                 />
               </Form.Item>
@@ -115,39 +120,56 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('LOGIN.PASSWORD_VALIDATION'),
+                    message: t('LOGIN_FORM.PASSWORD_VALIDATION'),
                   },
                 ]}
               >
                 <Input
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder={t('LOGIN.PASSWORD_PLACEHOLDER')}
+                  placeholder={t('LOGIN_FORM.PASSWORD_PLACEHOLDER')}
                 />
               </Form.Item>
               <Form.Item>
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="btn-login w-full"
+                  className="btn-login w-full mb-4"
                   loading={isLoading}
                 >
-                  {t('LOGIN.LOGIN')}
+                  {t('LOGIN_FORM.LOGIN')}
                 </Button>
+                <a
+                  className="underline underline-offset-2 ml-2 text-[#4478f1] text-md flex justify-center"
+                  href=""
+                >
+                  Forgot password?
+                </a>
+              </Form.Item>
+              <Divider>or</Divider>
+              <Form.Item>
+                <Button
+                  className="btn-login mb-4"
+                  type="secondary"
+                  block
+                  onClick={handleClick}
+                >
+                  <div className="flex items-center justify-center">
+                    <img src={iconGoogle} className="w-5 mr-2 text-lg" />
+                    {t('LOGIN_FORM.WITH_GOOGLE')}
+                  </div>
+                </Button>
+                <div className="w-full flex justify-center text-md">
+                  Don't have an account?
+                  <p
+                    className="underline underline-offset-2 ml-2 text-[#4478f1] cursor-pointer"
+                    onClick={() => navigate('/register')}
+                  >
+                    Register
+                  </p>
+                </div>
               </Form.Item>
             </Form>
-            <Divider>{t('LOGIN.OR')}</Divider>
-            <Button
-              className="btn-login"
-              type="secondary"
-              block
-              onClick={handleClick}
-            >
-              <div className="flex items-center justify-center">
-                <img src={iconGoogle} className="w-5 mr-2 text-lg" />
-                {t('LOGIN.WITH_GOOGLE')}
-              </div>
-            </Button>
           </Space>
         </Col>
       </Row>

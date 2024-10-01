@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   // State to hold the authentication token
-  const [token, setToken_] = useState(localStorage.getItem('token'));
+  const [token, setToken_] = useState(localStorage.getItem('accessToken'));
 
   // Function to set the authentication token
   const setToken = (newToken) => {
@@ -13,9 +14,9 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem('token', token);
+      localStorage.setItem('accessToken', token);
     } else {
-      localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
     }
   }, [token]);
 

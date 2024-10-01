@@ -2,7 +2,7 @@
   "SYSTEM": {
     "LOGO_NAME": "HT Store"
   },
-  "LOGIN": {
+  "LOGIN_FORM": {
     "TEXT": "Welcome back, please login below",
     "PASSWORD": "Password",
     "PASSWORD_INPUT": "Enter password",
@@ -20,6 +20,23 @@
     "PASSWORD_PLACEHOLDER": "Enter your password",
     "EMAIL_VALIDATION": "Please enter email address",
     "PASSWORD_VALIDATION": "Please enter password"
+  },
+  "REGISTER_FORM": {
+    "TEXT": "Fill in your registration form",
+    "PASSWORD": "Enter Password",
+    "PASSWORD_INPUT": "Enter Password again",
+    "EMAIL_INPUT": "Enter email",
+    "EMAIL": "Email",
+    "REGISTER": "Register",
+    "NAME_PLACEHOLDER": "Enter your name",
+    "EMAIL_PLACEHOLDER": "Enter your email address",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Enter confirm password",
+    "NAME_VALIDATION": "Please enter your name",
+    "EMAIL_VALIDATION": "Please enter email address",
+    "PASSWORD_VALIDATION": "Please enter password",
+    "CONFIRM_PASSWORD_VALIDATION": "Please enter confirm password",
+    "ERROR": "Something went wrong"
   },
   "BUTTON": {
     "SYNC": "Sync from {{name}}",
@@ -258,6 +275,7 @@
     "CREATED_ERROR_SAME_NAME": "Project name already exists",
     "CREATED_ERROR_SAME_TECH": "Technology already exists",
     "DELETED_SUCCESS": "Deleted {{field}} successfully",
+    "REGISTER_SUCCESS": "Register successfully",
     "LOGIN_SUCCESS": "Login successfully",
     "LOGIN_ERROR": "Login error",
     "DUPLICATE_FIELD": "{{field}} already exists",
