@@ -64,7 +64,7 @@ const Login = () => {
           setIsLoading(false);
           navigate('/');
           Toast('success', t('TOAST.LOGIN_SUCCESS'));
-          return setToken(response.data.accessToken);
+          return setToken(response.data.token);
         }
       });
     } catch (error) {
@@ -72,6 +72,7 @@ const Login = () => {
       return openNotificationWithIcon('error', error.response.data.message);
     }
   };
+
   return (
     <div id="main-container">
       {contextHolder}

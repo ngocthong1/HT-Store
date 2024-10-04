@@ -277,6 +277,7 @@
     "DELETED_SUCCESS": "Deleted {{field}} successfully",
     "REGISTER_SUCCESS": "Register successfully",
     "LOGIN_SUCCESS": "Login successfully",
+    "LOGOUT_SUCCESS": "Logout successfully",
     "LOGIN_ERROR": "Login error",
     "DUPLICATE_FIELD": "{{field}} already exists",
     "CREATED_CV": "Created CV successfully"

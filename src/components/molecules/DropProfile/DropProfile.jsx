@@ -33,7 +33,7 @@ const DropProfile = () => {
     token && {
       key: 'profile',
       label: (
-        <Typography className="text-white hover:text-[#5646ff] font-semibold">
+        <Typography className="text-black hover:text-[#5646ff] font-semibold">
           {t('DROPDOWN_PROFILE.PROFILE')}
         </Typography>
       ),
@@ -42,7 +42,7 @@ const DropProfile = () => {
     !token && {
       key: 'login',
       label: (
-        <Typography className="text-white hover:text-[#5646ff] font-semibold">
+        <Typography className="text-black hover:text-[#5646ff] font-semibold">
           {t('DROPDOWN_PROFILE.SIGN_IN')}
         </Typography>
       ),
@@ -51,7 +51,7 @@ const DropProfile = () => {
     token && {
       key: 'logout',
       label: (
-        <Typography className="text-white hover:text-[#FB303E] font-semibold">
+        <Typography className="text-black hover:text-[#FB303E] font-semibold">
           {t('DROPDOWN_PROFILE.SIGN_OUT')}
         </Typography>
       ),

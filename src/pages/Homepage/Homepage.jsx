@@ -2,13 +2,10 @@ import { HomeOutlined } from '@ant-design/icons';
 import { Layout, Space, Tooltip, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import DropProfile from '../../components/molecules/DropProfile/DropProfile';
 import './Homepage.scss';
-import CarouselComponent from '../../components/molecules/Carousel/Carousel';
-import HeroHome from '../../components/molecules/HeroHome/HeroHome';
-import Explore from '../../components/molecules/Explore/Explore.jsx';
-import FeaturesBlock from '../../components/molecules/FeaturesBlock/FeacherBlockes.jsx';
+
 import FooterComponent from '../../components/layout/Footer/Footer.jsx';
 
 const { Header, Content, Footer } = Layout;
@@ -82,10 +79,7 @@ export const Homepage = () => {
         <DropProfile />
       </Header>
       <Content className="w-full">
-        <HeroHome />
-        <CarouselComponent />
-        <Explore />
-        <FeaturesBlock />
+        <Outlet />
         <FooterComponent />
       </Content>
     </Layout>
