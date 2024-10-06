@@ -1,16 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../provider/authProvider';
-import {
-  Col,
-  Divider,
-  Row,
-  Space,
-  Typography,
-  Form,
-  Input,
-  notification,
-} from 'antd';
+import { Col, Divider, Row, Space, Typography, Form, Input } from 'antd';
 import './Login.scss';
 import { useTranslation } from 'react-i18next';
 import Button from '../../components/atoms/Button/Button';
@@ -26,15 +18,7 @@ const Login = () => {
   const { setToken, token } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [api, contextHolder] = notification.useNotification();
-
   const [isLoading, setIsLoading] = useState(false);
-
-  const openNotificationWithIcon = (type, message) => {
-    api[type]({
-      message,
-    });
-  };
 
   if (token) {
     return <Navigate to="/" />;
@@ -49,9 +33,9 @@ const Login = () => {
       if (data) {
         navigate('/');
         Toast('success', t('TOAST.LOGIN_SUCCESS'));
-        return setToken(JSON.stringify(data.user.accessToken));
+        return setToken(data.user.accessToken);
       } else {
-        return openNotificationWithIcon('error', `${t('LOGIN_FORM.ERROR')}`);
+        return Toast('error', `${t('LOGIN_FORM.ERROR')}`);
       }
     });
   };
@@ -69,13 +53,12 @@ const Login = () => {
       });
     } catch (error) {
       setIsLoading(false);
-      return openNotificationWithIcon('error', error.response.data.message);
+      return Toast('error', error.response.data.message);
     }
   };
 
   return (
     <div id="main-container">
-      {contextHolder}
       <Row className="auth-sidebar">
         <Col xs={0} sm={8} md={10} className="auth-sidebar-content">
           <img

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
 import AddToCart from './AddToCart';
@@ -44,7 +43,7 @@ function Product({
             $ {price.toLocaleString()}
           </p>
         </div>
-        {/* <AddToCart cartData={{ id, name, price }} /> */}
+        <AddToCart cartData={{ id, name, price }} />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useRef, useEffect, useContext } from 'react';
 import { CSSTransition as ReactCSSTransition } from 'react-transition-group';
 

@@ -1,7 +1,9 @@
 // Define public routes accessible to all users
+import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
 import { Homepage } from '../pages/Homepage/Homepage';
 import Landingpage from '../pages/Landingpage/Landingpage';
 import Login from '../pages/Login/Login';
+import ProductDetail from '../pages/Products/ProductDetail/ProductDetail';
 import Products from '../pages/Products/Products';
 import Register from '../pages/Register/Register';
 
@@ -16,7 +18,20 @@ const PublicRoute = [
       },
       {
         path: 'products',
-        element: <Products />,
+        children: [
+          {
+            path: '',
+            element: <Products />,
+          },
+          {
+            path: ':id',
+            element: <ProductDetail />,
+          },
+          {
+            path: 'checkout',
+            element: <CheckoutPage />,
+          },
+        ],
       },
     ],
   },

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Toast } from '../components/toast/Toast';
 
 export const axiosInstance = axios.create({
   baseURL:
@@ -30,7 +31,11 @@ axiosInstance.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-      //* */
+      Toast('error', 'Your session has expired, please log in again.');
+      setTimeout(() => {
+        localStorage.clear();
+        window.location.href = '/';
+      }, 1200);
     } else {
       return Promise.reject(error);
     }

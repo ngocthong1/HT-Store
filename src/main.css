@@ -19,7 +19,6 @@ body{
   display: flex;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,7 +74,7 @@ body{
     @apply text-red-500 h-6;
   }
   .form-section button {
-    @apply px-6 py-3 bg-purpleshade-400  text-white my-2 text-center rounded-lg w-full max-w-80;
+    @apply py-3 bg-purpleshade-400  text-white my-2 text-center rounded-lg w-full max-w-80;
   }
   .form-section a {
     @apply px-6 py-3 bg-grayshade-200 text-white my-2 text-center rounded-lg w-full max-w-80;

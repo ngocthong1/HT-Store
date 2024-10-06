@@ -10,11 +10,13 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './DropProfile.scss';
 import { useAuth } from '../../../provider/authProvider';
+import { useCartConsumer } from '../../../provider/CartProvider';
 
 const DropProfile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { token } = useAuth();
+  const { cartState } = useCartConsumer();
 
   const handleUser = async (key) => {
     if (key == 'profile') {
@@ -61,8 +63,15 @@ const DropProfile = () => {
 
   return (
     <Space direction="horizontal" size={'large'}>
-      <Badge count={5} size="small">
-        <ShoppingOutlined style={{ fontSize: '18px', cursor: 'pointer' }} />
+      <Badge
+        showZero
+        count={cartState && cartState.addedProducts.length}
+        size="small"
+      >
+        <ShoppingOutlined
+          style={{ fontSize: '18px', cursor: 'pointer' }}
+          onClick={() => navigate('/products/checkout')}
+        />
       </Badge>
       <Dropdown
         menu={{

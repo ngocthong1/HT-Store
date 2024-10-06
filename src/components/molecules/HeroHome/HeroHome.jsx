@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const HeroHome = () => {
   return (
     <section className="relative bg-white">
       <div
-        className="absolute xl:left-1/2 lg:left-1/3 hidden lg:block transform -translate-x-1/2 bottom-0 pointer-events-none z-30"
+        className="absolute xl:left-1/2 lg:left-2/4 hidden lg:block transform -translate-x-1/2 bottom-0 pointer-events-none z-30"
         aria-hidden="true"
       >
         <svg

@@ -58,7 +58,7 @@ const Explore = () => {
               data-aos="fade-right"
             >
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 mb-3">Powerful suite of tools</h3>
+                <h3 className="h3 mb-3 text-black">Powerful suite of tools</h3>
                 <p className="text-xl text-grayshade-50">
                   Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore pariatur. Excepteur sint occaecat cupidatat non
@@ -80,7 +80,11 @@ const Explore = () => {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div
+                      className={`font-bold leading-snug tracking-tight mb-1 ${
+                        tab !== 1 ? 'text-black' : '!text-white'
+                      }`}
+                    >
                       Simple shoping ecosystem
                     </div>
                     <div className="text-grayshade-50">
@@ -105,7 +109,11 @@ const Explore = () => {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div
+                      className={`font-bold leading-snug tracking-tight mb-1 ${
+                        tab !== 2 ? 'text-black' : '!text-white'
+                      }`}
+                    >
                       Simple shoping ecosystem
                     </div>
                     <div className="text-grayshade-50">
@@ -130,7 +138,11 @@ const Explore = () => {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div
+                      className={`font-bold leading-snug tracking-tight mb-1 ${
+                        tab !== 3 ? 'text-black' : '!text-white'
+                      }`}
+                    >
                       Simple shoping ecosystem
                     </div>
                     <div className="text-grayshade-50">
