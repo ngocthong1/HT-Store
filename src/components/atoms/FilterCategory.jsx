@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbCategoryPlus } from 'react-icons/tb';

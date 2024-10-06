@@ -1,6 +1,6 @@
 import { HomeOutlined } from '@ant-design/icons';
 import { Layout, Space, Tooltip, Typography } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router-dom';
 import DropProfile from '../../components/molecules/DropProfile/DropProfile';
@@ -8,7 +8,7 @@ import './Homepage.scss';
 
 import FooterComponent from '../../components/layout/Footer/Footer.jsx';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export const Homepage = () => {
   const pathname = window.location.pathname.split('/')[1];
