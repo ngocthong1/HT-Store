@@ -3,6 +3,7 @@ import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
 import { Homepage } from '../pages/Homepage/Homepage';
 import Landingpage from '../pages/Landingpage/Landingpage';
 import Login from '../pages/Login/Login';
+import MyOrders from '../pages/OrderPage/MyOrders';
 import ProductDetail from '../pages/Products/ProductDetail/ProductDetail';
 import Products from '../pages/Products/Products';
 import Register from '../pages/Register/Register';
@@ -32,6 +33,10 @@ const PublicRoute = [
             element: <CheckoutPage />,
           },
         ],
+      },
+      {
+        path: 'my-orders',
+        element: <MyOrders />,
       },
     ],
   },

@@ -4,8 +4,7 @@ import ImageSlider from '../../../components/atoms/ImageSlider';
 import { IoIosArrowBack } from 'react-icons/io';
 import { ThreeCircles } from 'react-loader-spinner';
 import { axiosInstance } from '../../../config/axios';
-// import AddToCart from '../components/AddToCart';
-
+import AddToCart from '../../../components/atoms/AddToCart';
 const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [imgIndex, setImgIndex] = useState(0);
@@ -67,13 +66,13 @@ const ProductDetail = () => {
                   $ {product.price.toLocaleString()}
                 </p>
               </div>
-              {/* <AddToCart
+              <AddToCart
                 cartData={{
                   id: product.id,
-                  title: product.title,
+                  name: product.name,
                   price: product.price,
                 }}
-              /> */}
+              />
             </div>
           </div>
         </div>

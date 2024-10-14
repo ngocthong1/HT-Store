@@ -172,7 +172,8 @@
     "SIGN_OUT": "Log out",
     "PLACEHOLDER": "Enter {{name}}",
     "USER": "User",
-    "SIGN_IN": "Sign in"
+    "SIGN_IN": "Sign in",
+    "MY_ORDERS": "My Orders"
   },
   "ACTION": {
     "UPDATE": "Update",
