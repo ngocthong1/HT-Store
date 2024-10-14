@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
-import Breadcrumb from '../../components/molecules/Breadcrumb/Breadcrumb';
 import './Dashboard.scss';
 
 const Dashboard = () => {
-  const breadcrumbItems = [{ key: 'dashboard' }];
-
   useEffect(() => {
-    document.title = 'Fashion | Dashboard';
+    document.title = 'HTS | Dashboard';
   }, []);
 
-  return (
-    <div id="dashboard">
-      <Breadcrumb items={breadcrumbItems} />
-    </div>
-  );
+  return <div id="dashboard"></div>;
 };
 
 export default Dashboard;

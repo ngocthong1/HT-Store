@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate } from 'react-router-dom';
-import { Col, Row, Space, Typography, Form, Input, notification } from 'antd';
+import { Col, Row, Space, Typography, Form, Input } from 'antd';
 import './Register.scss';
 import { useTranslation } from 'react-i18next';
 import Button from '../../components/atoms/Button/Button';
@@ -14,14 +14,8 @@ const Register = () => {
   const { setToken } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [api, contextHolder] = notification.useNotification();
 
   const [isLoading, setIsLoading] = useState(false);
-  const openNotificationWithIcon = (type, message) => {
-    api[type]({
-      message,
-    });
-  };
 
   useEffect(() => {
     document.title = 'HTS | Register';
@@ -36,15 +30,13 @@ const Register = () => {
         return setToken(response.data.accessToken);
       });
     } catch (error) {
-      console.log(error);
       if (error) {
-        return openNotificationWithIcon('error', error.response.data.message);
+        return Toast('error', error.response.data.message);
       }
     }
   };
   return (
     <div id="main-container">
-      {contextHolder}
       <Row className="auth-sidebar">
         <Col xs={0} sm={8} md={10} className="auth-sidebar-content">
           <img

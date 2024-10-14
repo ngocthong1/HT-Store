@@ -1,32 +1,22 @@
-import { useEffect } from 'react';
-import { useAuth } from '../../provider/authProvider';
-import { axiosInstance } from '../../config/axios';
 import AddToCart from '../../components/atoms/AddToCart';
 import EmptyCart from '../../components/atoms/EmptyCart';
 import { useCartConsumer } from '../../provider/CartProvider';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import Checkout from '../../components/atoms/CheckOutPaypal';
+import { useEffect } from 'react';
+
+const initialOptions = {
+  'client-id':
+    'AeQsSsHSPAeHmwIGz-aX48zD8dFcHgME2JpBpI2TlXicHR_KLkem41VIaixToWgDYZ3B5L39kwDL7C_x',
+  currency: 'USD',
+  intent: 'capture',
+};
 
 export default function CheckoutPage() {
-  const { cartState, dispatch } = useCartConsumer();
-  const { userInfo } = useAuth();
-  console.log(cartState, 'cartState');
-
+  const { cartState } = useCartConsumer();
   useEffect(() => {
-    if (!cartState.checkout) return;
-    const postOrder = async () => {
-      const orderData = {
-        ...cartState,
-        userInfo,
-      };
-      axiosInstance.post('/order', orderData).then((res) => console.log(res));
-      dispatch({ type: 'CLEAR' });
-    };
-    postOrder();
-  }, [cartState]);
-
-  const checkoutHandler = () => {
-    dispatch({ type: 'CHECKOUT' });
-  };
-
+    document.title = 'HTS | Checkout';
+  }, []);
   return (
     <>
       {cartState.checkout || !cartState.addedProducts.length ? (
@@ -88,14 +78,13 @@ export default function CheckoutPage() {
                 <p>Sales volume : </p>
                 <p className="ml-2">{cartState.ordersCount}</p>
               </div>
-              <div className="text-center">
-                <button
-                  onClick={checkoutHandler}
-                  className="h-10 px-4  font-semibold button"
-                >
-                  CHECKOUT
-                </button>
-              </div>
+              {cartState && (
+                <div className="justify-center text-center">
+                  <PayPalScriptProvider options={initialOptions}>
+                    <Checkout />
+                  </PayPalScriptProvider>
+                </div>
+              )}
             </div>
           )}
         </div>

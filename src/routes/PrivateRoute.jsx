@@ -4,11 +4,11 @@ import { ProtectedRoute } from './ProtectedRoute/ProtectedRoute.jsx';
 
 const PrivateRoute = [
   {
-    path: '/',
+    path: '/admin',
     element: <ProtectedRoute />,
     children: [
       {
-        path: 'db',
+        path: 'dashboard',
         element: <Dashboard />,
       },
     ],

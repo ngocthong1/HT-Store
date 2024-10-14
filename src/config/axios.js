@@ -30,7 +30,10 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (401 === error.response.status) {
+    if (
+      401 === error.response.status &&
+      window.location.pathname !== '/login'
+    ) {
       Toast('error', 'Your session has expired, please log in again.');
       setTimeout(() => {
         localStorage.clear();

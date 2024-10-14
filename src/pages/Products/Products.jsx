@@ -10,6 +10,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { useSearchParams } from 'react-router-dom';
 
 const Products = () => {
   const [listProduct, setListProduct] = useState([]);
@@ -23,6 +24,7 @@ const Products = () => {
   const [loading, setLoading] = useState(false); // State cho loading
   const [selectedCategory, setSelectedCategory] = useState(''); // State cho category
   const [categories, setCategories] = useState([]); // State cho danh sách category
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     // Fetch categories (giả sử API có endpoint để lấy danh sách category)
@@ -47,6 +49,7 @@ const Products = () => {
             ...pagination,
             search: searchTerm,
             category: selectedCategory, // Gửi category cùng với pagination và searchTerm
+            type: searchParams.get('type') || '',
           },
         });
         setListProduct(response.data.products.filter((item) => item));
@@ -59,7 +62,7 @@ const Products = () => {
       }
     };
     dataFetcher();
-  }, [pagination, searchTerm, selectedCategory]); // Gọi lại API khi pagination, searchTerm hoặc selectedCategory thay đổi
+  }, [pagination, searchTerm, selectedCategory, searchParams.get('type')]); // Gọi lại API khi pagination, searchTerm hoặc selectedCategory thay đổi
 
   const handlePageChange = (event, value) => {
     setPagination((prev) => ({ ...prev, page: value }));
@@ -74,7 +77,9 @@ const Products = () => {
     setSelectedCategory(event.target.value); // Cập nhật category đã chọn
     setPagination((prev) => ({ ...prev, page: 1 })); // Reset về trang 1 khi thay đổi category
   };
-
+  useEffect(() => {
+    document.title = 'HTS | Products';
+  }, []);
   return (
     <>
       <div className="wrapper bg-white">
@@ -99,7 +104,7 @@ const Products = () => {
                   label="Category"
                 >
                   <MenuItem value="">All</MenuItem>
-                  {categories.length > 0 && 
+                  {categories.length > 0 &&
                     categories.map((category) => (
                       <MenuItem key={category.id} value={category.name}>
                         {category.name}

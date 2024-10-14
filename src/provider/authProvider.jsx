@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken_] = useState(localStorage.getItem('accessToken'));
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState();
 
   // Function to set the authentication token
   const setToken = (newToken) => {
