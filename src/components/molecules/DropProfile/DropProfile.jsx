@@ -4,6 +4,7 @@ import {
   ShoppingOutlined,
   ProfileOutlined,
   LoginOutlined,
+  FieldTimeOutlined,
 } from '@ant-design/icons';
 import { Badge, Dropdown, Space, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -15,31 +16,46 @@ import { useCartConsumer } from '../../../provider/CartProvider';
 const DropProfile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token, userInfo } = useAuth();
   const { cartState } = useCartConsumer();
+  console.log(userInfo, 'userInfo');
 
   const handleUser = async (key) => {
-    if (key == 'profile') {
-      navigate('/profile');
+    if (key == 'admin') {
+      navigate('/admin/dashboard');
     }
     if (key == 'login') {
       navigate('/login');
     }
+    if (key == 'my-orders') {
+      navigate('/my-orders');
+    }
     if (key == 'logout') {
       localStorage.clear();
+      navigate('/');
       window.location.reload();
     }
   };
 
   const items = [
+    userInfo &&
+      userInfo.type === 'admin' && {
+        key: 'admin',
+        label: (
+          <Typography className="text-black hover:text-[#5646ff] font-semibold">
+            Admin Page
+          </Typography>
+        ),
+        icon: <ProfileOutlined />,
+      },
     token && {
-      key: 'profile',
+      key: 'my-orders',
       label: (
         <Typography className="text-black hover:text-[#5646ff] font-semibold">
-          {t('DROPDOWN_PROFILE.PROFILE')}
+          {t('DROPDOWN_PROFILE.MY_ORDERS')}
         </Typography>
       ),
-      icon: <ProfileOutlined />,
+      icon: <FieldTimeOutlined />,
     },
     !token && {
       key: 'login',

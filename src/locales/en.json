@@ -105,18 +105,9 @@
     "WOMEN": "Women",
     "KIDS": "Kids",
     "DASHBOARD": "Dashboard",
-    "USERS": "Users",
-    "USERS_CREATE": "Create user",
-    "USERS_UPDATE": "Update user",
-    "PROFILE": "Profile",
-    "EMPLOYEES_CREATE": "Create employees",
-    "EMPLOYEES": "Employees",
-    "EMPLOYEES_UPDATE": "Update employees",
-    "PROJECTS_CREATE": "Create project",
-    "PROJECTS_UPDATE": "Update project",
-    "PROJECTS": "Projects",
-    "PROJECTS_DETAILS": "Project details",
-    "EMPLOYEES_DETAILS": "Employees details"
+    "CUSTOMERS": "Customers",
+    "ORDERS": "Orders",
+    "PRODUCTS": "Products"
   },
   "MODAL": {
     "SYNC_INFO": "Sync Information",
@@ -172,7 +163,8 @@
     "SIGN_OUT": "Log out",
     "PLACEHOLDER": "Enter {{name}}",
     "USER": "User",
-    "SIGN_IN": "Sign in"
+    "SIGN_IN": "Sign in",
+    "MY_ORDERS": "My Orders"
   },
   "ACTION": {
     "UPDATE": "Update",

@@ -1,47 +1,34 @@
 import { HomeOutlined } from '@ant-design/icons';
 import { Layout, Space, Tooltip, Typography } from 'antd';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { createSearchParams, Outlet, useNavigate } from 'react-router-dom';
 import DropProfile from '../../components/molecules/DropProfile/DropProfile';
 import './Homepage.scss';
 
 import FooterComponent from '../../components/layout/Footer/Footer.jsx';
+import { useEffect } from 'react';
 
 const { Header, Content } = Layout;
 
 export const Homepage = () => {
-  const pathname = window.location.pathname.split('/')[1];
-
-  const [activeItem, setActiveItem] = useState(
-    pathname ? pathname : 'dashboard',
-  );
-
-  useEffect(() => {
-    setActiveItem(pathname);
-  }, [pathname]);
-
   const navigate = useNavigate();
   const { t } = useTranslation();
-  // const { token } = useAuth();
-
-  // if (!token) {
-  //   return <Navigate to="/login" />;
-  // }
-
+  useEffect(() => {
+    document.title = 'HTS | Homepage';
+  }, []);
   const IMenu = [
     {
-      key: 'man',
+      key: 'Male',
       icon: <HomeOutlined />,
       label: t('BREADCRUMB.MAN'),
     },
     {
-      key: 'woman',
+      key: 'Female',
       icon: <HomeOutlined />,
       label: t('BREADCRUMB.WOMEN'),
     },
     {
-      key: 'kids',
+      key: 'Children',
       icon: <HomeOutlined />,
       label: t('BREADCRUMB.KIDS'),
     },
@@ -58,19 +45,19 @@ export const Homepage = () => {
               <Tooltip title={item.label} key={index} trigger="hover">
                 <Space
                   key={index}
-                  //   className={`w-full item-menu ${
-                  //     activeItem === item.key ? 'menu-item-active' : ''
-                  //   }`}
                   direction="horizontal"
-                  //   onClick={() => {
-                  //     navigate(item.key), setActiveItem(item.key);
-                  //   }}
+                  onClick={() => {
+                    navigate({
+                      pathname: 'products',
+                      search: createSearchParams({
+                        type: item.key,
+                      }).toString(),
+                    });
+                  }}
                 >
-                  {/* {activeItem === item.key && ( */}
                   <Typography className="title-menu">
                     {item.label.toUpperCase()}
                   </Typography>
-                  {/* )} */}
                 </Space>
               </Tooltip>
             );

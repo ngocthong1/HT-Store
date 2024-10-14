@@ -1,32 +1,22 @@
-import { useEffect } from 'react';
-import { useAuth } from '../../provider/authProvider';
-import { axiosInstance } from '../../config/axios';
 import AddToCart from '../../components/atoms/AddToCart';
 import EmptyCart from '../../components/atoms/EmptyCart';
 import { useCartConsumer } from '../../provider/CartProvider';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import Checkout from '../../components/atoms/CheckOutPaypal';
+import { useEffect } from 'react';
+
+const initialOptions = {
+  'client-id':
+    'AeQsSsHSPAeHmwIGz-aX48zD8dFcHgME2JpBpI2TlXicHR_KLkem41VIaixToWgDYZ3B5L39kwDL7C_x',
+  currency: 'USD',
+  intent: 'capture',
+};
 
 export default function CheckoutPage() {
-  const { cartState, dispatch } = useCartConsumer();
-  const { userInfo } = useAuth();
-  console.log(cartState, 'cartState');
-
+  const { cartState } = useCartConsumer();
   useEffect(() => {
-    if (!cartState.checkout) return;
-    const postOrder = async () => {
-      const orderData = {
-        ...cartState,
-        userInfo,
-      };
-      axiosInstance.post('/order', orderData).then((res) => console.log(res));
-      dispatch({ type: 'CLEAR' });
-    };
-    postOrder();
-  }, [cartState]);
-
-  const checkoutHandler = () => {
-    dispatch({ type: 'CHECKOUT' });
-  };
-
+    document.title = 'HTS | Checkout';
+  }, []);
   return (
     <>
       {cartState.checkout || !cartState.addedProducts.length ? (
@@ -69,7 +59,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div className="w-max justify-self-center p-4 h-14">
-                      $ {Number(product.quantity * product.price).toFixed(2)}
+                      $ {Number(product.quantity * product.price)}
                     </div>
                   </div>
                 ))}
@@ -80,22 +70,19 @@ export default function CheckoutPage() {
             <div className="font-bold col-start-3 xl:mt-20 justify-self-end col-end-4 h-max w-full xl:w-max  border-2 border-grayshade-50  p-10 rounded-xl relative bg-cover bg-no-repeat outline outline-zinc-200 outline-8 ">
               <div className="flex xl:justify-start justify-center items-center my-5 text-black">
                 <p>Order Total : </p>
-                <p className="ml-2">
-                  $ {Number(cartState.totalPrice).toFixed(2)}
-                </p>
+                <p className="ml-2">$ {Number(cartState.totalPrice)}</p>
               </div>
               <div className="flex xl:justify-start justify-center items-center my-5 text-black">
                 <p>Sales volume : </p>
                 <p className="ml-2">{cartState.ordersCount}</p>
               </div>
-              <div className="text-center">
-                <button
-                  onClick={checkoutHandler}
-                  className="h-10 px-4  font-semibold button"
-                >
-                  CHECKOUT
-                </button>
-              </div>
+              {cartState && (
+                <div className="justify-center text-center">
+                  <PayPalScriptProvider options={initialOptions}>
+                    <Checkout />
+                  </PayPalScriptProvider>
+                </div>
+              )}
             </div>
           )}
         </div>

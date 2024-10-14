@@ -13,6 +13,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { Toast } from '../../components/toast/Toast';
 import { loginApi } from '../../apis/user';
+import { axiosInstance } from '../../config/axios';
 
 const Login = () => {
   const { setToken, token } = useAuth();
@@ -29,11 +30,20 @@ const Login = () => {
   }, []);
 
   const handleClick = () => {
-    signInWithPopup(auth, provider).then((data) => {
+    signInWithPopup(auth, provider).then(async (data) => {
       if (data) {
-        navigate('/');
-        Toast('success', t('TOAST.LOGIN_SUCCESS'));
-        return setToken(data.user.accessToken);
+        await axiosInstance
+          .post('/users/login-firebase', { email: data.user.email })
+          .then((res) => {
+            navigate('/');
+            Toast('success', t('TOAST.LOGIN_SUCCESS'));
+            return setToken(res.data.token);
+          })
+          .catch((err) => {
+            if (err.response.data.message === 'Account Invalid') {
+              Toast('error', 'Account Invalid. Please Register');
+            }
+          });
       } else {
         return Toast('error', `${t('LOGIN_FORM.ERROR')}`);
       }
