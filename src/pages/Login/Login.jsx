@@ -32,8 +32,7 @@ const Login = () => {
   const handleClick = () => {
     signInWithPopup(auth, provider).then(async (data) => {
       if (data) {
-        await axiosInstance
-          .post('/users/login-firebase', { email: data.user.email })
+        await axiosInstance.post('/users/login-firebase', { email: data.user.email })
           .then((res) => {
             navigate('/');
             Toast('success', t('TOAST.LOGIN_SUCCESS'));
