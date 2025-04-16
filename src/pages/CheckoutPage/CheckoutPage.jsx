@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const initialOptions = {
   'client-id':
-    'AeQsSsHSPAeHmwIGz-aX48zD8dFcHgME2JpBpI2TlXicHR_KLkem41VIaixToWgDYZ3B5L39kwDL7C_x',
+    'AT3kIBBCkGUs-q2NzbKon5uYnsh2ILChpMv6SknmO15XsuGWXMUMK4J1LDf7E38ud5HG1b_2DGIo4tXo',
   currency: 'USD',
   intent: 'capture',
 };

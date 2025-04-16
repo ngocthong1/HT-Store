@@ -29,25 +29,25 @@ const Login = () => {
     document.title = 'HTS | Login';
   }, []);
 
-  const handleClick = () => {
-    signInWithPopup(auth, provider).then(async (data) => {
-      if (data) {
-        await axiosInstance.post('/users/login-firebase', { email: data.user.email })
-          .then((res) => {
-            navigate('/');
-            Toast('success', t('TOAST.LOGIN_SUCCESS'));
-            return setToken(res.data.token);
-          })
-          .catch((err) => {
-            if (err.response.data.message === 'Account Invalid') {
-              Toast('error', 'Account Invalid. Please Register');
-            }
-          });
-      } else {
-        return Toast('error', `${t('LOGIN_FORM.ERROR')}`);
-      }
-    });
-  };
+  // const handleClick = () => {
+  //   signInWithPopup(auth, provider).then(async (data) => {
+  //     if (data) {
+  //       await axiosInstance.post('/users/login-firebase', { email: data.user.email })
+  //         .then((res) => {
+  //           navigate('/');
+  //           Toast('success', t('TOAST.LOGIN_SUCCESS'));
+  //           return setToken(res.data.token);
+  //         })
+  //         .catch((err) => {
+  //           if (err.response.data.message === 'Account Invalid') {
+  //             Toast('error', 'Account Invalid. Please Register');
+  //           }
+  //         });
+  //     } else {
+  //       return Toast('error', `${t('LOGIN_FORM.ERROR')}`);
+  //     }
+  //   });
+  // };
 
   const onFinish = async (values) => {
     try {
@@ -55,7 +55,7 @@ const Login = () => {
       await loginApi(values).then((response) => {
         if (response) {
           setIsLoading(false);
-          navigate('/');
+          navigate('/'); 
           Toast('success', t('TOAST.LOGIN_SUCCESS'));
           return setToken(response.data.token);
         }
@@ -141,7 +141,7 @@ const Login = () => {
               </Form.Item>
               <Divider>or</Divider>
               <Form.Item>
-                <Button
+                {/* <Button
                   className="btn-login mb-4"
                   type="secondary"
                   block
@@ -151,7 +151,7 @@ const Login = () => {
                     <img src={iconGoogle} className="w-5 mr-2 text-lg" />
                     {t('LOGIN_FORM.WITH_GOOGLE')}
                   </div>
-                </Button>
+                </Button> */}
                 <div className="w-full flex justify-center text-md">
                   Don't have an account?
                   <p
