@@ -153,7 +153,7 @@ const ProductTable = () => {
           className="ml-4"
           onClick={() => navigate('create')}
         >
-          Thêm sản phẩm
+          Add product
         </Button>
       </div>
 

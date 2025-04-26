@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
   const setToken = (newToken) => {
     setToken_(newToken);
   };
+
   useEffect(() => {
     if (token) {
       localStorage.setItem('accessToken', token);
@@ -34,6 +35,7 @@ const AuthProvider = ({ children }) => {
       token,
       setToken,
       userInfo,
+      setUserInfo,
     }),
     [token, userInfo],
   );

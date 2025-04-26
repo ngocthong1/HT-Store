@@ -46,19 +46,13 @@ function AddToCart({ cartData }) {
         (cartProduct) => cartProduct.id === cartData.id,
       ) ? (
         <>
-          <button className={'h-8 w-8 button !px-0'} onClick={increaseHandler}>
-            +
-          </button>
+          <button className={'h-8 w-8 button !px-0'} onClick={increaseHandler}> + </button>
+          
           <span className=" bg-zinc-200 text-grayshade-500 inline-block text-center border border-grayshade-50 dark:border-grayshade-100 min-w-10 py-1 px-1 text-md rounded-lg mx-1">
             {item.quantity}
           </span>
           {item.quantity > 1 ? (
-            <button
-              className={'h-8 w-8 button !px-0'}
-              onClick={decreaseHandler}
-            >
-              -
-            </button>
+            <button className={'h-8 w-8 button !px-0'} onClick={decreaseHandler}> - </button>
           ) : (
             <button
               className={'h-8 w-8 button !px-0 !bg-red-500'}

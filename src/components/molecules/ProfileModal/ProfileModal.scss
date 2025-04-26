@@ -1,0 +1,81 @@
+.profile-modal {
+  .ant-modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .ant-modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 16px 24px;
+  }
+
+  .ant-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+
+  .profile-info {
+    .profile-avatar {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 16px 0;
+
+      .avatar-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #5646ff;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0 auto 16px;
+      }
+
+      h2 {
+        margin: 8px 0;
+        font-size: 20px;
+        color: #333;
+      }
+
+      p {
+        margin: 4px 0;
+        color: #666;
+      }
+
+      .user-type {
+        font-style: italic;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .ant-tabs-nav {
+    margin-bottom: 24px;
+  }
+
+  .ant-form-item-label > label {
+    font-weight: 500;
+  }
+
+  .ant-btn-primary {
+    background-color: #5646ff;
+    border-color: #5646ff;
+
+    &:hover, &:focus {
+      background-color: #4535ee;
+      border-color: #4535ee;
+    }
+  }
+}

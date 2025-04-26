@@ -12,6 +12,24 @@ const ManageCustomers = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [newStatus, setNewStatus] = useState(false);
 
+  useEffect(() => {
+    document.title = 'HTS | Manage Customers';
+    setBreadcumb([{ key: 'customers' }]);
+    fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+    try {
+      setLoading(true);
+      const response = await axiosInstance.get('/users/all');
+      setCustomers(response.data);
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   const showStatusModal = (newActiveStatus, record) => {
     setSelectedUser(record);
     setNewStatus(newActiveStatus);
@@ -76,24 +94,6 @@ const ManageCustomers = () => {
       ),
     },
   ];
-
-  useEffect(() => {
-    document.title = 'HTS | Manage Customers';
-    setBreadcumb([{ key: 'customers' }]);
-    fetchCustomers();
-  }, []);
-
-  const fetchCustomers = async () => {
-    try {
-      setLoading(true);
-      const response = await axiosInstance.get('/users/all');
-      setCustomers(response.data);
-    } catch (error) {
-      console.error('Error fetching customers:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div id="ManageCustomer">

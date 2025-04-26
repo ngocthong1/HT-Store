@@ -14,9 +14,12 @@ const initialOptions = {
 
 export default function CheckoutPage() {
   const { cartState } = useCartConsumer();
+
+  
   useEffect(() => {
     document.title = 'HTS | Checkout';
   }, []);
+
   return (
     <>
       {cartState.checkout || !cartState.addedProducts.length ? (

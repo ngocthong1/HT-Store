@@ -5,6 +5,7 @@ import {
   ProfileOutlined,
   LoginOutlined,
   FieldTimeOutlined,
+  IdcardOutlined,
 } from '@ant-design/icons';
 import { Badge, Dropdown, Space, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -12,25 +13,30 @@ import { useNavigate } from 'react-router-dom';
 import './DropProfile.scss';
 import { useAuth } from '../../../provider/authProvider';
 import { useCartConsumer } from '../../../provider/CartProvider';
+import { useState } from 'react';
+import ProfileModal from '../ProfileModal/ProfileModal';
 
 const DropProfile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { token, userInfo } = useAuth();
   const { cartState } = useCartConsumer();
-  console.log(userInfo, 'userInfo');
+  const [profileModalVisible, setProfileModalVisible] = useState(false);
 
   const handleUser = async (key) => {
-    if (key == 'admin') {
+    if (key === 'admin') {
       navigate('/admin/dashboard');
     }
-    if (key == 'login') {
+    if (key === 'login') {
       navigate('/login');
     }
-    if (key == 'my-orders') {
+    if (key === 'my-orders') {
       navigate('/my-orders');
     }
-    if (key == 'logout') {
+    if (key === 'profile') {
+      setProfileModalVisible(true);
+    }
+    if (key === 'logout') {
       localStorage.clear();
       navigate('/');
       window.location.reload();
@@ -48,6 +54,15 @@ const DropProfile = () => {
         ),
         icon: <ProfileOutlined />,
       },
+    token && {
+      key: 'profile',
+      label: (
+        <Typography className="text-black hover:text-[#5646ff] font-semibold">
+          View Profile
+        </Typography>
+      ),
+      icon: <IdcardOutlined />,
+    },
     token && {
       key: 'my-orders',
       label: (
@@ -78,35 +93,42 @@ const DropProfile = () => {
   ];
 
   return (
-    <Space direction="horizontal" size={'large'}>
-      <Badge
-        showZero
-        count={cartState && cartState.addedProducts.length}
-        size="small"
-      >
-        <ShoppingOutlined
-          style={{ fontSize: '18px', cursor: 'pointer' }}
-          onClick={() => navigate('/products/checkout')}
-        />
-      </Badge>
-      <Dropdown
-        menu={{
-          items,
-          onClick: (item) => {
-            handleUser(item.key);
-          },
-        }}
-        trigger={['hover']}
-        className="profile-dropdown"
-        overlayClassName="profile-menu"
-        placement="bottom"
-        // onOpenChange={() => setActiveItem(!activeItem)}
-      >
-        <Typography.Text className="drop-name font-bold hover:text-[#5646ff]">
-          <UserOutlined style={{ fontSize: '16px' }} />
-        </Typography.Text>
-      </Dropdown>
-    </Space>
+    <>
+      <Space direction="horizontal" size={'large'}>
+        <Badge
+          showZero
+          count={cartState && cartState.addedProducts.length}
+          size="small"
+        >
+          <ShoppingOutlined
+            style={{ fontSize: '18px', cursor: 'pointer' }}
+            onClick={() => navigate('/products/checkout')}
+          />
+        </Badge>
+        <Dropdown
+          menu={{
+            items,
+            onClick: (item) => {
+              handleUser(item.key);
+            },
+          }}
+          trigger={['hover']}
+          className="profile-dropdown"
+          overlayClassName="profile-menu"
+          placement="bottom"
+        >
+          <Typography.Text className="drop-name font-bold hover:text-[#5646ff]">
+            <UserOutlined style={{ fontSize: '16px' }} />
+          </Typography.Text>
+        </Dropdown>
+      </Space>
+
+      {/* Profile Modal */}
+      <ProfileModal
+        visible={profileModalVisible}
+        onClose={() => setProfileModalVisible(false)}
+      />
+    </>
   );
 };
 export default DropProfile;
