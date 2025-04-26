@@ -1,19 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useNavigate, Navigate } from 'react-router-dom';
-import { useAuth } from '../../provider/authProvider';
-import { Col, Divider, Row, Space, Typography, Form, Input } from 'antd';
-import './Login.scss';
-import { useTranslation } from 'react-i18next';
-import Button from '../../components/atoms/Button/Button';
-import iconGoogle from '../../assets/img/google-icon.png';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { auth, provider } from '../../service/firebase';
-import { signInWithPopup } from 'firebase/auth';
+import { Col, Divider, Form, Input, Row, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
-import { Toast } from '../../components/toast/Toast';
+import { useTranslation } from 'react-i18next';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { loginApi } from '../../apis/user';
-import { axiosInstance } from '../../config/axios';
+import Button from '../../components/atoms/Button/Button';
+import { Toast } from '../../components/toast/Toast';
+import { useAuth } from '../../provider/authProvider';
+import './Login.scss';
 
 const Login = () => {
   const { setToken, token } = useAuth();
@@ -29,25 +25,7 @@ const Login = () => {
     document.title = 'HTS | Login';
   }, []);
 
-  const loginWithGoogle = () => {
-    signInWithPopup(auth, provider).then(async (data) => {
-      if (data) {
-        await axiosInstance.post('/users/login-firebase', { email: data.user.email })
-          .then((res) => {
-            navigate('/');
-            Toast('success', t('TOAST.LOGIN_SUCCESS'));
-            return setToken(res.data.token);
-          })
-          .catch((err) => {
-            if (err.response.data.message === 'Account Invalid') {
-              Toast('error', 'Account Invalid. Please Register');
-            }
-          });
-      } else {
-        return Toast('error', `${t('LOGIN_FORM.ERROR')}`);
-      }
-    });
-  };
+
 
   const login = async (values) => {
     try {
@@ -55,7 +33,7 @@ const Login = () => {
       await loginApi(values).then((response) => {
         if (response) {
           setIsLoading(false);
-          navigate('/'); 
+          navigate('/');
           Toast('success', t('TOAST.LOGIN_SUCCESS'));
           return setToken(response.data.token);
         }
@@ -141,17 +119,6 @@ const Login = () => {
               </Form.Item>
               <Divider>or</Divider>
               <Form.Item>
-                <Button
-                  className="btn-login mb-4"
-                  type="secondary"
-                  block
-                  onClick={loginWithGoogle}
-                >
-                  <div className="flex items-center justify-center">
-                    <img src={iconGoogle} className="w-5 mr-2 text-lg" />
-                    {t('LOGIN_FORM.WITH_GOOGLE')}
-                  </div>
-                </Button>
                 <div className="w-full flex justify-center text-md">
                   Don't have an account?
                   <p

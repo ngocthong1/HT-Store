@@ -26,8 +26,6 @@
     "docx": "7.3.0",
     "echarts": "^5.4.3",
     "file-saver": "^2.0.5",
-    "firebase": "^9.14.0",
-    "firebase-tools": "^12.9.1",
     "formik": "^2.4.5",
     "gapi-script": "^1.2.0",
     "i18next": "^23.7.6",
