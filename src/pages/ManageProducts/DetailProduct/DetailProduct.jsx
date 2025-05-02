@@ -1,6 +1,6 @@
+import { Card, Spin, Typography, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, Typography, Spin, message } from 'antd';
 import { axiosInstance } from '../../../config/axios';
 
 const { Title, Paragraph } = Typography;
@@ -12,24 +12,23 @@ const DetailProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axiosInstance.get(`/products/${id}`);
-        setProduct(response.data);
-        if (response.data.images && response.data.images.length > 0) {
-          setSelectedImage(response.data.images[0].url);
-        }
-      } catch (error) {
-        message.error('Failed to fetch product details.');
-        console.error('Error fetching product:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProduct();
   }, [id]);
 
+  const fetchProduct = async () => {
+    try {
+      const response = await axiosInstance.get(`/products/${id}`);
+      setProduct(response.data);
+      if (response.data.images && response.data.images.length > 0) {
+        setSelectedImage(response.data.images[0].url);
+      }
+    } catch (error) {
+      message.error('Failed to fetch product details.');
+      console.error('Error fetching product:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
   if (loading) return <Spin size="large" />; // Hiện spinner khi đang tải
 
   return (

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import { axiosInstance } from '../../config/axios';
 import { useAuth } from '../../provider/authProvider';
-import EmptyOrders from '../../components/atoms/EmptyOrders';
+import EmptyOrders from '../../components/EmptyOrders';
 import { jwtDecode } from 'jwt-decode';
 
 const MyOrders = () => {

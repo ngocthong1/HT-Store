@@ -1,7 +1,7 @@
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
-import { axiosInstance } from '../../config/axios';
-import { useCartConsumer } from '../../provider/CartProvider';
-import { Toast } from '../toast/Toast';
+import { axiosInstance } from '../config/axios';
+import { useCartConsumer } from '../provider/CartProvider';
+import { Toast } from './toast/Toast';
 
 const Checkout = () => {
   const [{ isPending }] = usePayPalScriptReducer();

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Modal, Tabs, Form, Input, Button, message, Spin } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
-import { axiosInstance } from '../../../config/axios';
-import { useAuth } from '../../../provider/authProvider';
+import { axiosInstance } from '../../config/axios';
+import { useAuth } from '../../provider/authProvider';
 import './ProfileModal.scss';
 
 const { TabPane } = Tabs;

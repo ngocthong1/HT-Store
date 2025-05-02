@@ -1,9 +1,9 @@
-import AddToCart from '../../components/atoms/AddToCart';
-import EmptyCart from '../../components/atoms/EmptyCart';
-import { useCartConsumer } from '../../provider/CartProvider';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-import Checkout from '../../components/atoms/CheckOutPaypal';
 import { useEffect } from 'react';
+import AddToCart from '../../components/AddToCart';
+import Checkout from '../../components/CheckOutPaypal';
+import EmptyCart from '../../components/EmptyCart';
+import { useCartConsumer } from '../../provider/CartProvider';
 
 const initialOptions = {
   'client-id':
@@ -15,7 +15,7 @@ const initialOptions = {
 export default function CheckoutPage() {
   const { cartState } = useCartConsumer();
 
-  
+
   useEffect(() => {
     document.title = 'HTS | Checkout';
   }, []);

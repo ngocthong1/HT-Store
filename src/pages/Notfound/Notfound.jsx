@@ -1,8 +1,8 @@
-import Button from '../../components/atoms/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import pagenotfound from '../../assets/img/404.png';
+import Button from '../../components/Button/Button';
 
 const NotFound = () => {
   const navigate = useNavigate();

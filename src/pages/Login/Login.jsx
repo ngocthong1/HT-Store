@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { loginApi } from '../../apis/user';
-import Button from '../../components/atoms/Button/Button';
+import Button from '../../components/Button/Button';
 import { Toast } from '../../components/toast/Toast';
 import { useAuth } from '../../provider/authProvider';
 import './Login.scss';

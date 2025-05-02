@@ -1,4 +1,4 @@
-import searchnotfound from '../../assets/img/searchnotfound.png';
+import searchnotfound from '../assets/img/searchnotfound.png';
 
 const NoProductFound = () => {
   return (

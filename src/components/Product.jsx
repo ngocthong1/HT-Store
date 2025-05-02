@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { textShrink } from '../utils/helpers/textShrink';
 import AddToCart from './AddToCart';
-import { textShrink } from '../../utils/helpers/textShrink';
 
 const Product = ({ productData }) => {
   return (

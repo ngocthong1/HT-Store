@@ -1,8 +1,8 @@
+import { message, Modal, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
-import './ManageCustomers.scss';
-import { useLayout } from '../../provider/layoutProvider';
-import { Table, Tag, message, Modal } from 'antd';
 import { axiosInstance } from '../../config/axios';
+import { useLayout } from '../../provider/layoutProvider';
+import './ManageCustomers.scss';
 
 const ManageCustomers = () => {
   const { setBreadcumb } = useLayout();
@@ -29,7 +29,7 @@ const ManageCustomers = () => {
       setLoading(false);
     }
   };
-  
+
   const showStatusModal = (newActiveStatus, record) => {
     setSelectedUser(record);
     setNewStatus(newActiveStatus);

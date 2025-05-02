@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import ImageSlider from '../../../components/atoms/ImageSlider';
+import ImageSlider from '../../../components/ImageSlider';
 import { IoIosArrowBack } from 'react-icons/io';
 import { ThreeCircles } from 'react-loader-spinner';
 import { axiosInstance } from '../../../config/axios';
-import AddToCart from '../../../components/atoms/AddToCart';
+import AddToCart from '../../../components/AddToCart';
 const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [imgIndex, setImgIndex] = useState(0);

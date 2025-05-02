@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Product from '../../components/atoms/Product';
+import Product from '../../components/Product';
 import { ThreeCircles } from 'react-loader-spinner';
-import NoProductFound from '../../components/atoms/NoProductFound';
+import NoProductFound from '../../components/NoProductFound';
 import { axiosInstance } from '../../config/axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -31,7 +31,8 @@ const Products = () => {
     const fetchCategories = async () => {
       try {
         const response = await axiosInstance.get('/products/categories');
-        setCategories(response.data.categories); // Giả sử response.data là danh sách category
+        setCategories(response.data.categories);
+        console.log("toimuonlogdata",response)
       } catch (err) {
         console.error('Error fetching categories', err);
       }

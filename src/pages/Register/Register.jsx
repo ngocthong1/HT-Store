@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Col, Row, Space, Typography, Form, Input } from 'antd';
 import './Register.scss';
 import { useTranslation } from 'react-i18next';
-import Button from '../../components/atoms/Button/Button';
+import Button from '../../components/Button/Button';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { Toast } from '../../components/toast/Toast';

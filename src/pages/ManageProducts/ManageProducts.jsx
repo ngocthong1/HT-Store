@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import './ManageProducts.scss';
+import ProductTable from '../../components/Table';
 import { useLayout } from '../../provider/layoutProvider';
-import ProductTable from '../../components/atoms/Table';
+import './ManageProducts.scss';
 
 const ManageProducts = () => {
   const { setBreadcumb } = useLayout();

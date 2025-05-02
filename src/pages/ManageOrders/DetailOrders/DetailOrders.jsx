@@ -9,21 +9,20 @@ const OrderDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchOrderDetail = async () => {
-      try {
-        const response = await axiosInstance.get(`/orders/detail/${id}`);
-        setOrder(response.data);
-      } catch (error) {
-        message.error('Failed to fetch order details.');
-        console.error('Error fetching order:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchOrderDetail();
   }, [id]);
 
+  const fetchOrderDetail = async () => {
+    try {
+      const response = await axiosInstance.get(`/orders/detail/${id}`);
+      setOrder(response.data);
+    } catch (error) {
+      message.error('Failed to fetch order details.');
+      console.error('Error fetching order:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
   if (loading) return <Spin size="large" />; // Hiện spinner khi đang tải
 
   if (!order) return <Typography.Text>No order found.</Typography.Text>; // Nếu không tìm thấy đơn hàng

@@ -2,11 +2,11 @@ import { HomeOutlined } from '@ant-design/icons';
 import { Layout, Space, Tooltip, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { createSearchParams, Outlet, useNavigate } from 'react-router-dom';
-import DropProfile from '../../components/molecules/DropProfile/DropProfile';
+import DropProfile from '../../components/DropProfile/DropProfile.jsx';
 import './Homepage.scss';
 
-import FooterComponent from '../../components/layout/Footer/Footer.jsx';
 import { useEffect } from 'react';
+import FooterComponent from '../../components/layout/Footer/Footer.jsx';
 
 const { Header, Content } = Layout;
 

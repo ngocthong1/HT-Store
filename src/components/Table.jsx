@@ -1,8 +1,8 @@
+import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Input, message, Popconfirm, Table, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { Table, Input, Button, Popconfirm, message, Typography } from 'antd';
-import { EyeOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { axiosInstance } from '../../config/axios';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../config/axios';
 
 const ProductTable = () => {
   const navigate = useNavigate();

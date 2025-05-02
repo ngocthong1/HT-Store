@@ -3,7 +3,7 @@ import './main.css';
 import 'antd/dist/reset.css';
 import { Suspense } from 'react';
 import AuthProvider from './provider/authProvider';
-import SpinLoading from './components/atoms/SpinLoading/SpinLoading.jsx';
+import SpinLoading from './components/SpinLoading/SpinLoading.jsx';
 import Routes from './router.jsx';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './config/i18n';

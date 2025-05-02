@@ -1,4 +1,4 @@
-import emptycart from '../../assets/img/emptycart.png';
+import emptycart from '../assets/img/emptycart.png';
 
 const EmptyCart = () => {
   return (

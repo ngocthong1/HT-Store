@@ -1,10 +1,10 @@
-import { MdOutlineDelete } from 'react-icons/md';
-import findItem from '../../utils/helpers/FindCartProduct';
-import { useAuth } from '../../provider/authProvider';
-import { useCartConsumer } from '../../provider/CartProvider';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import { MdOutlineDelete } from 'react-icons/md';
+import { useAuth } from '../provider/authProvider';
+import { useCartConsumer } from '../provider/CartProvider';
+import findItem from '../utils/helpers/FindCartProduct';
 
 function AddToCart({ cartData }) {
   const { token } = useAuth();

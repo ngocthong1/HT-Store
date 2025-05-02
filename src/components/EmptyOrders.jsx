@@ -1,4 +1,4 @@
-import emptyorders from '../../assets/img/emptyorders.png';
+import emptyorders from '../assets/img/emptyorders.png';
 
 const EmptyOrders = () => {
   return (
