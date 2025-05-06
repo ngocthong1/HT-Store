@@ -20,7 +20,9 @@ const Checkout = () => {
   };
 
   const onApproveOrder = (data, actions) => {
+    //xác thực thanh toán
     return actions.order.capture().then(async () => {
+      //thanh toán thành công thì call api tạo đơn
       if (cartState) {
         await axiosInstance
           .post('/orders', {
